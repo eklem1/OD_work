@@ -1,0 +1,27 @@
+FullAbsorb:
+  IndexOfRefractionRe: 1.69
+  Absorption: 1.00
+  AbsorptionLength: 0.00000000001  #mm 
+  ScatteringLength: 0.00000000001  #mm
+Steel: #is this stainless steel??
+  Absorption: 0.8
+  SpecularReflectivity: 0.1
+  DiffuseReflectivity: 0.1
+Water:
+  #will have many entries
+  IndexOfRefractionRe: 1.33
+  AbsorptionLength: 
+  ScatteringLength: 
+
+OC_surface: #random numbers right now
+  Absorption: 0.5
+  SpecularReflectivity: 0.3
+  DiffuseReflectivity: .2
+ReflectiveFoil:
+  Absorption: 0.01
+  SpecularReflectivity: 0.99
+  # DiffuseReflectivity: 0.0
+SS: #maybe needed  
+  Absorption: 0.8
+  SpecularReflectivity: 0.1
+  DiffuseReflectivity: 0.1
