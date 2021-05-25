@@ -9,7 +9,7 @@ ChromaImage: '[ChromaPath]/../chroma_latest.sif'
 Detector:                                   # Define parameters for the construction of the detector geometry
   DetectorName: nEXO_OD                        # Defines detector name 
   PathToDetector: '[ChromaPath]/Geometry/OD/'  # Location of STL files 
-  OpticalProperties: '[ChromaPath]/Yaml/OpticalProperties_nEXO.yaml' # Location of YAML card that contains optical properties
+  OpticalProperties: '[ChromaPath]/Yaml/OpticalProperties_OD.yaml' # Location of YAML card that contains optical properties
   CacheName: nEXO_OD # Location where geometry will be cached for rerunning same simulation
   ReflectivityData: '[ChromaPath]/Data/' # Location of reflectivity data for PMTs ???
   Save: True                                # Boolean that decides if geometry will be saved 
@@ -84,9 +84,15 @@ Components:
   PMT:
     Inside: [FullAbsorb]
     Outside: [Water]
-    Surface: [Glass] 
+    Surface: [BGlass] 
     Color: [Red]
     # Rotation: [Z,24]              # defines repeated addition of the same mesh with [axis of rotation, number of copies]
+  # PMTSupports:
+  #   Inside: [FullAbsorb]
+  #   Outside: [Water]
+  #   Surface: [StainlessSteel] 
+  #   Color: [Grey]
+  #   # Rotation: [Z,24] 
   WaterTank:
     Inside: [Water]
     Outside: [Vaccum]
@@ -100,6 +106,6 @@ Components:
   Supports:
     Inside: [FullAbsorb]
     Outside: [Water]
-    Surface: [SS] 
+    Surface: [StainlessSteel] 
     Color: [Grey] 
     # Rotation: [Z,24]              # defines repeated addition of the same mesh with [axis of rotation, number of copies]
