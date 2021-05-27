@@ -1,0 +1,135 @@
+FullAbsorb:
+  IndexOfRefractionRe: 1.69
+  Absorption: 1.00
+  AbsorptionLength: 0.00000000001  #mm 
+  ScatteringLength: 0.00000000001  #mm
+Vacuum:
+  IndexOfRefractionRe: 1.00
+  AbsorptionLength: 2000000000000000000 #mm
+  ScatteringLength: 2000000000000000000 #mm
+
+Water: #wavelength dependant
+  IndexOfRefractionRe:
+    0: !!python/tuple [536.73,1.332] #[wavelength (nm), index]
+    1: !!python/tuple [514.46,1.3323]
+    2: !!python/tuple [499.94,1.3328]
+    3: !!python/tuple [486.21,1.333]
+    4: !!python/tuple [457.51,1.3334]
+    5: !!python/tuple [438.11,1.3344]
+    6: !!python/tuple [418.87,1.335]
+    7: !!python/tuple [406.51,1.3355]
+    8: !!python/tuple [396.12,1.3367]
+    9: !!python/tuple [381.49,1.3375]
+    10: !!python/tuple [373.45,1.3382]
+    11: !!python/tuple [359.37,1.3387]
+    12: !!python/tuple [347.29,1.3393]
+    13: !!python/tuple [336.0,1.3404]
+    14: !!python/tuple [322.04,1.3412]
+    15: !!python/tuple [310.74,1.3422]
+    16: !!python/tuple [291.04,1.3432]
+  AbsorptionLength: 
+    0: !!python/tuple [536.73,4570.0] #[wavelength (nm), Length (mm)]
+    1: !!python/tuple [514.46,7410.0]
+    2: !!python/tuple [499.94,1.122e+04]
+    3: !!python/tuple [486.21,1.95e+04]
+    4: !!python/tuple [457.51,4.786e+04]
+    5: !!python/tuple [438.11,9.228e+04]
+    6: !!python/tuple [418.87,1.135e+05]
+    7: !!python/tuple [406.51,1.9055e+05]
+    8: !!python/tuple [396.12,4.0738e+05]
+    9: !!python/tuple [381.49,6.6069e+05]
+    10: !!python/tuple [373.45,8.414e+05]
+    11: !!python/tuple [359.37,1.0715e+06]
+    12: !!python/tuple [347.29,1.1482e+06]
+    13: !!python/tuple [336.0,8.7096e+05]
+    14: !!python/tuple [322.04,6.6069e+05]
+    15: !!python/tuple [310.74,4.217e+05]
+    16: !!python/tuple [291.04,2.1135e+05]
+  ScatteringLength:
+    0: !!python/tuple [251.03,2.7216e+04] #[wavelength (nm), Length (mm)]
+    1: !!python/tuple [255.64,3.0464e+04]
+    2: !!python/tuple [261.22,3.3217e+04]
+    3: !!python/tuple [266.56,3.6467e+04]
+    4: !!python/tuple [274.57,3.9975e+04]
+    5: !!python/tuple [281.86,4.4226e+04]
+    6: !!python/tuple [288.41,4.7728e+04]
+    7: !!python/tuple [294.48,5.1727e+04]
+    8: !!python/tuple [299.82,5.5971e+04]
+    9: !!python/tuple [305.4,5.9719e+04]
+    10: !!python/tuple [310.98,6.4461e+04]
+    11: !!python/tuple [316.81,6.8459e+04]
+    12: !!python/tuple [322.15,7.3697e+04]
+    13: !!python/tuple [327.25,7.7692e+04]
+    14: !!python/tuple [334.29,8.4428e+04]
+    15: !!python/tuple [340.6,9.0664e+04]
+    16: !!python/tuple [345.7,9.6151e+04]
+    17: !!python/tuple [351.28,1.0263e+05]
+    18: !!python/tuple [356.62,1.0862e+05]
+    19: !!python/tuple [361.96,1.146e+05]
+    20: !!python/tuple [367.3,1.2108e+05]
+    21: !!python/tuple [373.13,1.2856e+05]
+    22: !!python/tuple [377.74,1.3429e+05]
+    23: !!python/tuple [382.59,1.4102e+05]
+    24: !!python/tuple [387.45,1.48e+05]
+    25: !!python/tuple [391.58,1.5398e+05]
+    26: !!python/tuple [394.73,1.5896e+05]
+    27: !!python/tuple [398.62,1.6494e+05]
+    28: !!python/tuple [403.96,1.7341e+05]
+    29: !!python/tuple [408.33,1.8113e+05]
+    30: !!python/tuple [412.69,1.8761e+05]
+    31: !!python/tuple [416.34,1.9434e+05]
+    32: !!python/tuple [419.01,1.9981e+05]
+
+ReflectiveFoil:
+  Absorption: 0.01
+  SpecularReflectivity: 0.99
+  # DiffuseReflectivity: 0.0
+
+OC_surface: #will vary for tests 
+  Absorption: 0.01
+  SpecularReflectivity: 0.99
+  # DiffuseReflectivity: 0.0
+StainlessSteel: #will vary for tests 
+  Absorption: 0.8
+  SpecularReflectivity: 0.1
+  DiffuseReflectivity: 0.1
+
+BorosilicateGlass: #also wavelength dependant
+  IndexOfRefractionRe: 1.458
+  AbsorptionLength: 
+    0: !!python/tuple [598.96,0.0001] #[wavelength (nm), Length (mm)]
+    1: !!python/tuple [499.94,500.0]
+  # ScatteringLength: 
+  Transmission: #for glass of 2 mm thickness
+    0: !!python/tuple [260.0,0.0093] #[wavelength (nm), %]
+    1: !!python/tuple [270.0,0.0062]
+    2: !!python/tuple [280.0,0.0053]
+    3: !!python/tuple [290.0,0.008]
+    4: !!python/tuple [300.0,0.05]
+    5: !!python/tuple [310.0,0.2008]
+    6: !!python/tuple [320.0,0.4356]
+    7: !!python/tuple [330.0,0.6478]
+    8: !!python/tuple [340.0,0.7785]
+    9: !!python/tuple [350.0,0.8468]
+    10: !!python/tuple [360.0,0.8875]
+    11: !!python/tuple [370.0,0.9044]
+    12: !!python/tuple [380.0,0.9164]
+    13: !!python/tuple [390.0,0.9154]
+    14: !!python/tuple [400.0,0.9218]
+    15: !!python/tuple [410.0,0.9249]
+    16: !!python/tuple [420.0,0.9256]
+    17: !!python/tuple [430.0,0.9247]
+    18: !!python/tuple [440.0,0.9251]
+    19: !!python/tuple [450.0,0.9254]
+    20: !!python/tuple [460.0,0.9266]
+    21: !!python/tuple [470.0,0.9262]
+    22: !!python/tuple [480.0,0.928]
+    23: !!python/tuple [490.0,0.9284]
+    24: !!python/tuple [500.0,0.928]
+  # Thickness: 
+
+
+BialkaliGlass:
+  IndexOfRefractionRe: 2.9
+  # AbsorptionLength: 
+  # ScatteringLength: 
