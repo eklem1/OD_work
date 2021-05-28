@@ -16,7 +16,18 @@ def renameSTLs(path):
             if "WT" in filename:
                 old = filename
                 new = x[0] + "_" + x[5] + "_" + x[-1]
-
+            elif "PMT" in filename:
+                old = filename
+                
+                for j, l in enumerate(x):
+                    split_space = l.split(' ')
+                    if len(split_space) > 1:
+                        l = ""
+                        for word in split_space:
+                            l = l + word
+                        x[j] = l
+                
+                new = x[0] + "_" + x[3] + "_" + x[7] + "_" + x[-4] + x[-2] + "_" + x[-1]
     #             print(r"{}{}".format(path, new))
             else:
                 old = filename
