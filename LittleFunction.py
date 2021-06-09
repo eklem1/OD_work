@@ -48,9 +48,28 @@ bounds.
 bounds = [lower, upper] limits of wavelength that should be printed
 """
 def ListForYaml(wavelength, values, bounds=None):
+    #sort the data so the wavelenghts are in increasing order
+    inds = wavelength.argsort()
+    wavelength = wavelength[inds]
+    values = values[inds]
 
     if isinstance(bounds, list):
-        wavelength = wavelength[(wavelength > bounds[0]) & (bounds[1]>wavelength)]
+        #get the min and max index of the range of values we want if bounds are given
+        minI = np.where(wavelength == np.min(wavelength[wavelength > bounds[0]]))[0][0]
+        maxI = np.where(wavelength == np.max(wavelength[wavelength < bounds[1]]))[0][0]
+        
+#         print(minI, maxI)
+        if minI==0 and maxI==len(wavelength):
+            print('Using full data set')
+        elif maxI==len(wavelength):
+            wavelength = wavelength[minI:]
+            values = values[minI:]
+        else:                    
+            wavelength = wavelength[minI:maxI+1]
+            values = values[minI:maxI+1]
+        
+        if len(wavelength)==0:
+            print("No data is in that range!")
 
     for i, wl in enumerate(wavelength):
             
