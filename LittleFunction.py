@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import os
+import os, csv
 
 """
 Rename STL files the fusion saves to removed unneeded parts.
@@ -130,3 +130,79 @@ def getCherenkovWavelengthSample(NumPhotons, MuonEnergy, Interp=True):
         photonWavelen = np.random.choice(wavelength_intep, p=E_loss_rel_intep, size=NumPhotons)
     
     return photonWavelen
+
+
+
+def ReadMuonsFromCSV(csvFile):
+    #this will hold 6 arrays, one for each type of data, but using a list over all
+    #to hold them so we can have varying lengths
+    data=[]
+
+    temp=np.empty(shape=[0,5])
+    MuonNum = np.array([])
+    Angle = np.array([])
+    Energy = np.array([])
+    #these two we want to be 2D arrays with the second dimension 
+    #being size 3 for our (x,y,z) coords
+    Entry = np.empty((0, 3))
+    Exit = np.empty((0, 3))
+
+    with open(csvFile) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0 #sets the line to 0 so names are names
+    
+        for row in csv_reader:                                  
+            #This finds is a loop looking at each row in the csv_reader
+      
+            if line_count == 0:                                 
+                #print(f'Column names are {", ".join(row)}')     
+                #This line prints off the column names so you know what the order is 
+                data.append(np.array([r for r in row]))
+                #This appends the four column names together in the first array of data
+                line_count += 1                                 
+                #This is so it can tell how many are being read 
+            else:
+                count = 0
+                for x in row:
+                    if len(x) > 10:
+                        #Eleminate the square brackets cause they were causing problems
+                        x = x.replace("[","")
+                        x = x.replace("]","")
+          
+                        z = x.split(' ')
+                        #some times arrays have an extra space added at start for alignment that we need to remove
+                        z = [k for k in z if k != '']
+                        z = [float(k) for k in z]
+                        #This floats the numbers in a way that works both positions and single numbers
+                        count += 1
+                    else:
+                        z = float(x)
+                        count+=1
+                    
+                    if count == 1:
+                        MuonNum = np.append(MuonNum, z)
+                        #append the muon number to the data array
+                    elif count == 2:
+                        Angle = np.append(Angle, z)
+                        #append the angle to the data array
+                    elif count == 3:
+                        Energy = np.append(Energy, z)
+                        #append the Energy to the data array
+                    elif count == 4:
+                        Entry = np.append(Entry, [z], axis=0)
+                        #append the Entry to the data array
+                    elif count == 5:
+                        Exit = np.append(Exit, [z], axis=0)
+                        #append the Exit
+               
+                    line_count += 1
+
+        #we want data to be a 2D list here
+        data.append(MuonNum)
+        data.append(Angle)
+        data.append(Energy)
+        #convert these two from m to mm
+        data.append(Entry*1000)
+        data.append(Exit*1000)
+      
+    return data
