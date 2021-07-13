@@ -98,16 +98,17 @@ def getCherenkovWavelengthSample(NumPhotons, MuonEnergy, Interp=True):
     
     #From nEXO_offline
     eV = 1
-    energies = np.array([2.07, 2.09, 2.12, 2.20, 2.31, 2.41, 2.48, 2.55, 2.71, 2.83 ,
+    energies = np.array([1.926, 2.07, 2.09, 2.12, 2.20, 2.31, 2.41, 2.48, 2.55, 2.71, 2.83 ,
            2.96, 3.05, 3.13, 3.25, 3.32, 3.45, 3.57, 3.69, 3.85, 3.99, 4.26, 4.99, 5.29]) #eV
 
-    n = np.array([1.332, 1.33233458, 1.33275974, 1.333, 1.33337057,1.33440426, 1.33497163, 
+    n = np.array([1.3313, 1.332, 1.33233458, 1.33275974, 1.333, 1.33337057,1.33440426, 1.33497163, 
             1.33553901, 1.33667376, 1.33746809, 1.33824548, 1.33866779, 1.33926229, 1.34044132, 
             1.34115378, 1.3422317 , 1.34324954, 1.34459331, 1.34635211, 1.34761808, 1.35056125, 
             1.36267944, 1.36844391])
     #'''
     #get wavelengths and frequencies from the energy array
     wavelengths = 1239.8/energies
+    
     freq = 3e17/wavelengths
     
     #calculate the energy lost per unit length from the Frank-Tamm Formula
@@ -118,7 +119,10 @@ def getCherenkovWavelengthSample(NumPhotons, MuonEnergy, Interp=True):
     
     ### Second option with interpolation ###
     #interpolated - I think this is better
-    wavelength_intep = np.linspace(np.min(wavelengths), np.max(wavelengths), 300)
+    #total wavelength range of data
+#     wavelength_intep = np.linspace(np.min(wavelengths), np.max(wavelengths), 300)
+    
+    wavelength_intep = np.linspace(290, 600, 300)
     #need to flip data arrays as np.interp needs increasing x values
     E_loss_rel_intep = np.interp(wavelength_intep, wavelengths[::-1], E_loss_rel[::-1])
 
