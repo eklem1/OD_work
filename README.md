@@ -41,7 +41,7 @@ Along with using the data files saved below, in the code are also values:
 - Bialkali optical properties for PMT photocathode, from Daya Bay collaboration sims use in nEXO-offline https://github.com/nEXO-collaboration/nexo-offline/blob/6807b2f844f6f34215f4b9764626e35140838bfd/Simulation/DetSim/nEXOSim/src/nEXOMaterials.cc#L1065
 
 #### OpticsData/
-Contains most of the optical data used from various sources. ADD SOURCES
+Contains most of the optical data used from various sources. Overview of the optics data collection and the plan for each part of the OD geometry materials for chroma [here](./Optics/OpticsData/Materials%20and%20Optics.xlsx).
 
 Fewell_AO348325_Data_File_1.csv - M.P. Fewell and A. von Trojan,"Absorption of light by water in the region of high transparency: recommended values for photon-transport calculation", Applied Optics, vol 58 (2019) pp. https://doi.org/10.1364/AO.58.002408
 
